@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addContact, getContacts} from '../../redux';
 import { RiUserFill, RiPhoneFill, RiUserAddFill } from "react-icons/ri";
 import {Form, Label, InputContainer, InputForm, ButtonAdd} from './ContactForm.styled'
-export const ContactForm = ({onAddContact}) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -67,6 +67,7 @@ export const ContactForm = ({onAddContact}) => {
                 title="Name may contain only letters, apostrophe, dash, and spaces. For example: Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
                 value={name}
+                placeholder="Enter contact name"
                 onChange={handleChangeName} />
               <RiUserFill style={{  position: 'absolute', top: '50%', left: '8px', transform: 'translateY(-50%)'}}/>
             </InputContainer>
@@ -81,6 +82,7 @@ export const ContactForm = ({onAddContact}) => {
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
                 value={number}
+                placeholder="Enter phone number"
                 onChange={handleChangeNumber}/>
               <RiPhoneFill style={{  position: 'absolute', top: '50%', left: '8px', transform: 'translateY(-50%)'}}/>
             </InputContainer>

@@ -4,18 +4,16 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import { ThemeProvider } from '@emotion/react'
 import { App } from 'components/App';
-import {store, persistor} from './redux';
+import {store} from './redux';
 import {theme} from './constants';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={theme}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <PersistGate loading={<p>Loading...</p>} persistor={persistor}>
-          <App />
-        </PersistGate>
+        <App />
       </Provider>
-    </React.StrictMode>
-  </ThemeProvider>
+    </ThemeProvider>
+  </React.StrictMode>
 );
