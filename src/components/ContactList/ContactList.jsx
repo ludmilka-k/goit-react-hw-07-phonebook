@@ -3,16 +3,15 @@ import {deleteContact, getContacts} from '../../redux';
 import {getFilter} from '../../redux';
 import  { RiUserUnfollowFill } from 'react-icons/ri'
 import { iconSize } from '../../constants';
-import {List, Item, Delete, ContactName, ContactNumber} from './ContactList.styled'
+import {List, Item, Delete, ContactName, ContactNumber} from './ContactList.styled';
+import {getFilteredContacts} from '../../redux';
 
 export const ContactList = () => {
 	const contacts = useSelector(getContacts);
 	const filter = useSelector(getFilter);
 	const dispatch = useDispatch();
 
-	const filteredContacts = contacts.filter(contact =>
-	  contact.name.toLowerCase().includes(filter.toLowerCase())
-	);
+	const filteredContacts = useSelector(getFilteredContacts);
 	const onRemoveContact = (contactId) => {
 		dispatch(deleteContact(contactId));
 	};
