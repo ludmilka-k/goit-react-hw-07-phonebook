@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteContact, getContacts} from '../../redux';
+import {deleteContactThunk, getContacts} from '../../redux';
 import {getFilter} from '../../redux';
 import  { RiUserUnfollowFill } from 'react-icons/ri'
 import { iconSize } from '../../constants';
@@ -13,7 +13,7 @@ export const ContactList = () => {
 
 	const filteredContacts = useSelector(getFilteredContacts);
 	const onRemoveContact = (contactId) => {
-		dispatch(deleteContact(contactId));
+		dispatch(deleteContactThunk(contactId));
 	};
 	return (
     <List >

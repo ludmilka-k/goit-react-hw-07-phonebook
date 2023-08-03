@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 import {useSelector, useDispatch} from 'react-redux';
-import {addContact, getContacts} from '../../redux';
+import {addContactThunk, getContacts} from '../../redux';
 import { RiUserFill, RiPhoneFill, RiUserAddFill } from "react-icons/ri";
 import {Form, Label, InputContainer, InputForm, ButtonAdd} from './ContactForm.styled'
 export const ContactForm = () => {
@@ -46,7 +46,7 @@ export const ContactForm = () => {
       name,
       number,
     };
-    dispatch(addContact(contact));
+    dispatch(addContactThunk(contact));
     resetForm()
   }
 
