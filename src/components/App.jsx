@@ -4,16 +4,16 @@ import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
 import {Section} from './Section'
-import { getIsLoading, getError, fetchContactsThunk } from '../redux';
+import { selectIsLoading, selectError, fetchContactsThunk} from '../redux';
 
 export const App = () => {
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-  const dispatch = useDispatch;
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContactsThunk())
-  }, [dispatch]);
+    dispatch(fetchContactsThunk());
+  }, [ dispatch]);
 
   return (
     <>
@@ -23,10 +23,10 @@ export const App = () => {
       <Section title="Contacts">
         <Filter />
         <ContactList />
-        {isLoading && !error && <p>Loading...</p>}
+        {isLoading && !error && <p>Loading contacts...</p>}
       </Section>
     </>
-  )
-}
+  );
+};
 
 
