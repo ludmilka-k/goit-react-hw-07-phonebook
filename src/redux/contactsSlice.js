@@ -14,7 +14,6 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContactsThunk.pending, state => {
         state.isLoading = true;
-        // state.error = null;
       })
       .addCase(fetchContactsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -28,13 +27,12 @@ const contactsSlice = createSlice({
       // ADD CONTACT
       .addCase(addContactThunk.pending, state => {
         state.isLoading = true;
-        // state.error = null;
       })
       .addCase(addContactThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = state.items.concat([action.payload]);
-        // state.items.push(action.payload);
+        // state.items = state.items.concat([action.payload]);
+        state.items.unshift(action.payload);
       })
       .addCase(addContactThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -43,7 +41,6 @@ const contactsSlice = createSlice({
       // DELETE CONTACT
       .addCase(deleteContactThunk.pending, state => {
         state.isLoading = true;
-        // state.error = null;
       })
       .addCase(deleteContactThunk.fulfilled, (state, action) => {
         state.isLoading = false;

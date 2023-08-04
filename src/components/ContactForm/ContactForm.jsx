@@ -8,7 +8,7 @@ export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contactsSlice = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleChangeName = event => {
@@ -34,7 +34,7 @@ export const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const isExistingContact = contactsSlice.contacts.some(contact => {
+    const isExistingContact = contacts.some(contact => {
       return contact.name.toLowerCase() === name.toLowerCase();
     });
     if (isExistingContact) {
