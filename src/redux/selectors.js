@@ -8,7 +8,6 @@ export const selectFilter = state => state.filter;
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter], (contacts, filter) => {
     if(!filter) {
-        console.log(contacts);
       return contacts;
     }
     return contacts.filter(({ name}) =>
